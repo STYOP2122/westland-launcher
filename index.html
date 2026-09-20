@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Westland RP</title>
+    <link rel="stylesheet" href="./Resources/fonts.css">
+    <link rel="stylesheet" href="./Resources/launcher-style.css">
+    <link rel="stylesheet" href="./Resources/settings-style.css">
+</head>
+
+<body>
+    <div class="launcher-container">
+        <img class="container-background" src="./Resources/container-background.png" alt="">
+        <div class="container-recolorer"></div>
+
+        <div class="loading-main-container" id="loadingScreen">
+            <div class="left-circle"></div>
+            <div class="right-circle"></div>
+            <span class="launcher-load-text" id="launcher-load-text">Загрузка лаунчера...</span>
+            <img class="loading-icon-img" src="./Resources/loading-icon.png" alt="">
+            <img class="loading-logo" src="./Resources/logo.png" alt="Westland RP">
+            <div class="launcher-update-section" id="launcher-update-section">
+                <div class="launcher-update-bar">
+                    <div class="launcher-update-bar-fill" id="launcher-update-bar-fill"></div>
+                </div>
+                <span class="launcher-update-percent" id="launcher-update-percent">0%</span>
+            </div>
+            <div class="loading-bottom-text">© 2026 Westland RP. Все права защищены.</div>
+        </div>
+
+        <div class="main-container" id="mainContent" style="opacity: 0">
+            <div class="left-top-circle"></div>
+            <div class="right-middle-circle"></div>
+            <div class="right-middler-circle"></div>
+            <div class="character-circle"></div>
+            <img class="character" src="./Resources/character.png" alt="">
+
+            <div class="main-launcher">
+                <header class="header">
+                    <nav class="header-nav">
+                        <img src="./Resources/logo.png" class="header-logo" id="logo-button" alt="Westland RP">
+                        <div class="links">
+                            <span class="nav-link" data-link="main">Главная</span>
+                            <span class="nav-link" data-link="forum">Форум</span>
+                            <span class="nav-link" data-link="donate">Пополнить счёт</span>
+                        </div>
+                        <div class="input-container">
+                            <img src="./Resources/input-icon.png" alt="">
+                            <input id="nickname-input" placeholder="Введите ваш никнейм" autocomplete="off" readonly>
+                        </div>
+                        <div class="buttons">
+                            <img src="./Resources/settings.png" id="settings-button" alt="Настройки">
+                            <button id="minimize-button" class="minimize-button" type="button" aria-label="Свернуть">−</button>
+                            <img src="./Resources/exit.png" id="exit-button" alt="Выход">
+                        </div>
+                    </nav>
+                </header>
+
+                <main class="main">
+                    <div class="news-and-links">
+                        <span class="news-title">Новости проекта</span>
+                        <div class="soc-buttons">
+                            <button id="website-button">
+                                <img src="./Resources/site-icon.png" alt="">
+                                Сайт
+                            </button>
+                            <button id="vk-button">
+                                <img src="./Resources/vk-icon.png" alt="">
+                                ВКонтакте
+                            </button>
+                            <button id="youtube-button">
+                                <img src="./Resources/yt-icon.png" alt="">
+                                YouTube
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="news" id="news-container"></div>
+                </main>
+
+                <footer class="footer">
+                    <div class="servers">
+                        <button class="servers-button" type="button">
+                            <div class="servers-circle-first"></div>
+                            <span class="servers-text" id="server-name">Westland 1</span>
+                        </button>
+                        <div class="online-server">
+                            <span>
+                                <svg width="9" height="12" viewBox="0 0 9 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M4.42709 5.90277C6.0571 5.90277 7.37848 4.58139 7.37848 2.95139C7.37848 1.32138 6.0571 0 4.42709 0C2.79709 0 1.47571 1.32138 1.47571 2.95139C1.47571 4.58139 2.79709 5.90277 4.42709 5.90277Z" fill="white"/>
+                                    <path d="M4.42708 6.88623C1.98319 6.88895 0.00272081 8.86942 0 11.3133C0 11.585 0.220224 11.8052 0.49189 11.8052H8.36224C8.63391 11.8052 8.85413 11.585 8.85413 11.3133C8.85143 8.86942 6.87096 6.88893 4.42708 6.88623Z" fill="white"/>
+                                </svg>
+                                Онлайн
+                            </span>
+                            <span><span class="current-online" id="online-count">0</span>/<span id="max-online-count">1000</span></span>
+                        </div>
+                    </div>
+
+                    <div class="loading-section">
+                        <div class="resource-loader" id="download-progress-container">
+                            <div class="loader-icon">
+                                <img src="./Resources/loading-icon.png" alt="Loading">
+                            </div>
+                            <div class="loader-info">
+                                <div class="loader-text" id="download-status">Готово к запуску</div>
+                                <div class="loader-bar">
+                                    <div class="loader-bar-fill" id="download-progress-bar" style="width: 0%"></div>
+                                </div>
+                            </div>
+                            <div class="loader-percent" id="download-percent">0%</div>
+                        </div>
+                    </div>
+
+                    <div class="main-button-section" id="play-button">
+                        <span id="play-button-text">Запустить игру</span>
+                    </div>
+                </footer>
+            </div>
+
+            <div class="settings-overlay" style="display: none">
+                <div class="settings-dialog">
+                    <span class="settings-title">Настройки лаунчера</span>
+                    <img id="close-settings" class="settings-close-btn" src="./Resources/exit.png" alt="Закрыть">
+
+                    <div class="settings-main-section">
+                        <div class="settings-section">
+                            <span class="settings-section-title">Путь к игре:</span>
+                            <div class="path-error-message">Пожалуйста, выберите путь установки</div>
+                            <div class="settings-path-container">
+                                <img class="settings-path-left-icon" src="./Resources/path-left-icon.png" alt="">
+                                <input id="install-path" type="text" class="settings-path-input" readonly>
+                                <button id="change-path" class="settings-browse-btn" type="button">
+                                    <svg viewBox="0 0 12 13" fill="none" class="svg-change-path">
+                                        <path d="M8.8421 0H1.26316C0.568421 0 0 0.531818 0 1.18182V9.45455H1.26316V1.18182H8.8421V0ZM8.21053 2.36364L12 5.90909V11.8182C12 12.4682 11.4316 13 10.7368 13H3.78316C3.08842 13 2.52632 12.4682 2.52632 11.8182L2.53263 3.54545C2.53263 2.89545 3.09474 2.36364 3.78947 2.36364H8.21053ZM7.57895 6.5H11.0526L7.57895 3.25V6.5Z" fill="white"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="settings-section">
+                            <span class="settings-section-title">Выделить оперативную память:</span>
+                            <div class="settings-button-group">
+                                <button id="ram-1024" class="settings-option-btn ram-button" type="button">1024</button>
+                                <button id="ram-2048" class="settings-option-btn ram-button" type="button">2048</button>
+                                <button id="ram-3072" class="settings-option-btn ram-button" type="button">3072</button>
+                                <button id="ram-4096" class="settings-option-btn ram-button" type="button">4096</button>
+                            </div>
+                        </div>
+
+                        <div class="settings-section">
+                            <span class="settings-section-title">Настройки графики</span>
+                            <div class="settings-button-group">
+                                <button id="graphics-low" class="settings-option-btn graphics-button" type="button">Без графики</button>
+                                <button id="graphics-medium" class="settings-option-btn graphics-button" type="button">Средние</button>
+                                <button id="graphics-high" class="settings-option-btn graphics-button" type="button">Высокие</button>
+                            </div>
+                            <!-- <span class="settings-section-title dop-settings">Дополнительные настройки</span>
+                            <div class="toggle-option">
+                                <span>Широкий экран</span>
+                                <label class="switch">
+                                    <input id="widescreen-fix" type="checkbox">
+                                    <span class="slider"></span>
+                                </label>
+                            </div> -->
+                        </div>
+
+                        <div class="settings-action-container">
+                            <button id="check-files" class="settings-action-btn" type="button">Проверить файлы</button>
+                            <button id="repair-game" class="settings-action-btn" type="button">Починить игру</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./renderer.js"></script>
+</body>
+
+</html>

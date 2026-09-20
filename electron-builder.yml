@@ -1,0 +1,39 @@
+
+appId: com.westlandrp.launcher
+productName: Westland RP Launcher
+
+# Publishing configuration
+publish:
+  provider: generic
+  url: https://wl-rp-files.b-cdn.net/launcher-updates
+
+# Windows-specific configuration
+win:
+  target: nsis
+  icon: logo.ico
+
+# NSIS installer configuration
+nsis:
+  # For initial installation
+  oneClick: false
+  allowToChangeInstallationDirectory: true
+  createDesktopShortcut: true
+  createStartMenuShortcut: true
+  shortcutName: Westland RP Launcher
+  
+  # For updates
+  differentialPackage: true
+  
+# Special configuration for auto-update behavior 
+# This is separate from the main installation
+nsisWeb:
+  oneClick: true
+  perMachine: true
+  allowToChangeInstallationDirectory: false
+
+# Resources to include
+extraResources:
+  - from: node_modules/regedit/vbs
+    to: vbs
+    filter:
+      - "**/*"

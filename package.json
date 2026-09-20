@@ -1,0 +1,101 @@
+{
+  "name": "westland-rp",
+  "version": "1.0.1",
+  "main": "main.js",
+  "description": "Westland RP Launcher",
+  "author": "@STYOP",
+  "scripts": {
+    "obfuscate": "npx electron build-pre.js",
+    "start": "electron .",
+    "build": "electron-builder",
+    "publish": "electron-builder --win --publish always",
+    "install": "node-gyp rebuild",
+    "rebuild": "electron-rebuild -f -w game_launcher"
+  },
+  "build": {
+    "productName": "Westland RP Launcher",
+    "publish": [
+      {
+        "provider": "generic",
+        "url": "https://wl-rp-files.b-cdn.net/launcher-updates"
+      }
+    ],
+    "appId": "com.westlandrp.launcher",
+    "asar": true,
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64",
+            "ia32"
+          ]
+        }
+      ],
+      "icon": "logo.ico",
+      "requestedExecutionLevel": "asInvoker"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Westland RP Launcher",
+      "differentialPackage": true,
+      "perMachine": true
+    },
+    "mac": {
+      "target": "dmg",
+      "icon": "logo.ico"
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ],
+      "icon": "logo.ico"
+    },
+    "extraFiles": [
+      {
+        "from": "node_modules/regedit/vbs",
+        "to": "vbs",
+        "filter": [
+          "**/*"
+        ]
+      }
+    ],
+    "extraResources": [
+      {
+        "from": "node_modules/regedit/vbs",
+        "to": "vbs",
+        "filter": [
+          "**/*"
+        ]
+      },
+      {
+        "from": "native/samp-injector.exe",
+        "to": "native/samp-injector.exe"
+      }
+    ]
+  },
+  "devDependencies": {
+    "@electron/rebuild": "^3.7.2",
+    "electron": "^21.4.0",
+    "electron-builder": "^23.6.0",
+    "electron-rebuild": "^3.2.9",
+    "javascript-obfuscator": "^4.1.1",
+    "nan": "^2.22.2",
+    "node-gyp": "^11.2.0"
+  },
+  "dependencies": {
+    "bytenode": "^1.5.7",
+    "electron-log": "^5.3.3",
+    "electron-updater": "^6.6.2",
+    "is-elevated": "^4.0.0",
+    "ls": "^0.2.1",
+    "node-fetch": "^2.7.0",
+    "php-server-manager": "^1.3.3",
+    "regedit": "^5.1.3",
+    "request": "^2.88.2"
+  }
+}
